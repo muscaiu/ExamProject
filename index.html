@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+    <div id="loginModal" class="loginModal">
+
+        <form onsubmit="SubmitLogin(event)" class="loginModal-content animate">
+            <div class="imgcontainer">
+                <img src="img/anonymous.png" alt="Avatar" class="avatar">
+            </div>
+            <div class="headerText"><b>Login</b></div>
+            <div class="modalContainer">
+                <label><b>Username</b></label>
+                <input id="loginUsername" type="text" placeholder="Enter Username">
+                <label><b>Password</b></label>
+                <input id="loginPassword" type="password" placeholder="Enter Password">
+                <div id="loginDataError" class="validationmessage"></div>
+                <div id="loginSuccess" class="validationSuccess"></div>
+                <button type="submit">Login</button>
+                <button type="button" onclick="ShowRegisterModal()" class="cancelbtn">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="registerModal" class="registerModal">
+        <form onsubmit="SubmitRegister(event)" class="registerModal-content animate">
+            <div class="imgcontainer">
+                <a id="prevAvatar">
+                    <img class="arrow" src="img/arrow-left.png" alt="">
+                </a>
+                <img id="registerAvatar" src="img/avatar-f.png" alt="Avatar" class="avatar">
+                <a id="nextAvatar">
+                    <img class="arrow" src="img/arrow-right.png" alt="">
+                </a>
+            </div>
+            <div class="headerText"><b>Register</b></div>
+            <div class="modalContainer">
+                <label><b>Email</b></label>
+                <input id="registerEmail" type="text" placeholder="Enter Email">
+                <label><b>Username</b></label>
+                <input id="registerUsername" type="text" placeholder="Enter Username">
+                <label><b>Password</b></label>
+                <input id="registerPassword" type="password" placeholder="Enter Password">
+                <label><b>Repeat Password</b></label>
+                <input id="registerRepeatPassword" type="password" placeholder="Repeat Password">
+                <div id="registerEmailError" class="validationmessage"></div>
+                <div id="registerUsernameError" class="validationmessage"></div>
+                <div id="registerPasswordError" class="validationmessage"></div>
+                <div id="registerRepeatPasswordError" class="validationmessage"></div>
+                <div id="registerSuccess" class="validationSuccess"></div>
+                <button type="submit">Register</button>
+                <button type="button" onclick="ShowLoginModal()" class="cancelbtn">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="main" class="main animate">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">JS Project</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Bing-Bling Gallery</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><img id="navAvatar" src="img/avatar-f.png" alt="Avatar" class="navAvatar"></li>
+                    <li>
+                        <a id="hello" class="dropdown-toggle" data-toggle="dropdown" href="#">hello 
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="logout" href="# "><span class="glyphicon glyphicon-off"></span>  Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Image gallery-->
+        <div class="container">
+            <div id="main_area">
+                <div class="row">
+                    <div class="col-sm-6" id="slider-thumbs">
+                        <ul class="hide-bullets">
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-16">
+                                    <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories16.jpg">
+                                </a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-1"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories01.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-2"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories02.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-3"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories03.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-4"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories04.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-5"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories05.jpg"></a>
+                            </li>
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-6"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories06.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-7"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories07.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-8"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories08.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-9"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories09.jpg"></a>
+                            </li>
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-10"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories10.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-11"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories11.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-12"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories12.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-13"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories13.jpg"></a>
+                            </li>
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-14"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories14.jpg"></a>
+                            </li>
+
+                            <li class="col-sm-3">
+                                <a class="thumbnail" id="carousel-selector-15"><img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/Thumb/falko_gallery_accessories15.jpg"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-xs-12" id="slider">
+                            <!-- Top part of the slider -->
+                            <div class="row">
+                                <div class="col-sm-12" id="carousel-bounding-box">
+                                    <div class="carousel slide" id="myCarousel">
+                                        <!-- Carousel items -->
+                                        <div class="carousel-inner">
+                                            <div class="active item" data-slide-number="16">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories16.jpg"></div>
+
+                                            <div class="item" data-slide-number="1">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories01.jpg"></div>
+
+                                            <div class="item" data-slide-number="2">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories02.jpg"></div>
+
+                                            <div class="item" data-slide-number="3">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories03.jpg"></div>
+
+                                            <div class="item" data-slide-number="4">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories04.jpg"></div>
+
+                                            <div class="item" data-slide-number="5">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories05.jpg"></div>
+
+                                            <div class="item" data-slide-number="6">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories06.jpg"></div>
+
+                                            <div class="item" data-slide-number="7">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories07.jpg"></div>
+
+                                            <div class="item" data-slide-number="8">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories08.jpg"></div>
+
+                                            <div class="item" data-slide-number="9">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories09.jpg"></div>
+
+                                            <div class="item" data-slide-number="10">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories10.jpg"></div>
+
+                                            <div class="item" data-slide-number="11">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories11.jpg"></div>
+
+                                            <div class="item" data-slide-number="12">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories12.jpg"></div>
+
+                                            <div class="item" data-slide-number="13">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories13.jpg"></div>
+
+                                            <div class="item" data-slide-number="14">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories14.jpg"></div>
+
+                                            <div class="item" data-slide-number="15">
+                                                <img src="https://bufiles.blob.core.windows.net/co3628/gallery/accessories/falko_gallery_accessories15.jpg"></div>
+                                        </div>
+                                        <!-- Carousel nav -->
+                                        <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                        </a>
+                                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="js/app.js "></script>
+    <script src="js/gallery.js "></script>
+
+</body>
+
+</html>
